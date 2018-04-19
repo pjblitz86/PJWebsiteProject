@@ -5,7 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PJWebsiteProject.Data;
+using PJWebsiteProject.Data.Repositories;
 using PJWebsiteProject.Models;
+using PJWebsiteProject.Models.DrinkModels;
+using PJWebsiteProject.Models.DrinkModels.MockData;
 using PJWebsiteProject.Services;
 
 namespace PJWebsiteProject
@@ -31,6 +34,9 @@ namespace PJWebsiteProject
 
 			// Add application services.
 			services.AddTransient<IEmailSender, EmailSender>();
+			services.AddTransient<IDrinkRepository, DrinkRepository>();
+			services.AddTransient<IDrinkCategoryRepository, DrinkCategoryRepository>();
+
 
 			services.AddMvc();
 		}
