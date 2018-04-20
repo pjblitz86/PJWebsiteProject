@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,9 +36,12 @@ namespace PJWebsiteProject
 			services.AddTransient<IEmailSender, EmailSender>();
 			services.AddTransient<IDrinkRepository, DrinkRepository>();
 			services.AddTransient<IDrinkCategoryRepository, DrinkCategoryRepository>();
-
+			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+			services.AddScoped(sp => ShoppingCart.GetCart(sp));
 
 			services.AddMvc();
+			services.AddMemoryCache();
+			services.AddSession();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,12 +62,16 @@ namespace PJWebsiteProject
 
 			app.UseAuthentication();
 
+			app.UseSession();
+
+			//			app.UseMvcWithDefaultRoute();
 			app.UseMvc(routes =>
 			{
-				routes.MapRoute(
-					name: "default",
-					template: "{controller=Home}/{action=Index}/{id?}");
+				routes.MapRoute(name: "categoryFilter", template: "Drink/{action}/{category?}", defaults: new { Controller = "Drink", action = "List" });
+				routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
 			});
+
 		}
 	}
 }
+

@@ -60,9 +60,9 @@ nav{
 a.remove{
 	text-decoration:none;
 }
-a.remove:hover{
-	color:blue;
-}
+	a.remove:hover {
+		color: blue;
+	}
 
 .center_div{
 	margin: 0 auto;
