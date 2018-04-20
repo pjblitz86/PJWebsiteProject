@@ -8,7 +8,6 @@ using PJWebsiteProject.Data;
 using PJWebsiteProject.Data.Repositories;
 using PJWebsiteProject.Models;
 using PJWebsiteProject.Models.DrinkModels;
-using PJWebsiteProject.Models.DrinkModels.MockData;
 using PJWebsiteProject.Services;
 
 namespace PJWebsiteProject
