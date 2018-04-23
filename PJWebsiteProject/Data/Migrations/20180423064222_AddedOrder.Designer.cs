@@ -11,9 +11,10 @@ using System;
 namespace PJWebsiteProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180423064222_AddedOrder")]
+    partial class AddedOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,42 +231,27 @@ namespace PJWebsiteProject.Data.Migrations
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AddressLine1")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                    b.Property<string>("AddressLine1");
 
                     b.Property<string>("AddressLine2");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("Country");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("Email");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("FirstName");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("LastName");
 
                     b.Property<DateTime>("OrderPlaced");
 
                     b.Property<decimal>("OrderTotal");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(25);
+                    b.Property<string>("PhoneNumber");
 
-                    b.Property<string>("State")
-                        .HasMaxLength(10);
+                    b.Property<string>("State");
 
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasMaxLength(10);
+                    b.Property<string>("ZipCode");
 
                     b.HasKey("OrderId");
 

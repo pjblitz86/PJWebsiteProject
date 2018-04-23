@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PJWebsiteProject.Models.DrinkModels;
 using PJWebsiteProject.ViewModels;
-using System.Collections.Generic;
 
 namespace PJWebsiteProject.Components
 {
@@ -16,8 +15,8 @@ namespace PJWebsiteProject.Components
 
 		public IViewComponentResult Invoke()
 		{
-			//var items = _shoppingCart.GetShoppingCartItems();
-			var items = new List<ShoppingCartItem>() { new ShoppingCartItem(), new ShoppingCartItem() };
+			var items = _shoppingCart.GetShoppingCartItems();
+
 			_shoppingCart.ShoppingCartItems = items;
 
 			var shoppingCartViewModel = new ShoppingCartViewModel
