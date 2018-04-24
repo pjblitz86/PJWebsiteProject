@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PJWebsiteProject.Models.DrinkModels;
 using PJWebsiteProject.ViewModels;
 using System.Linq;
@@ -16,19 +17,21 @@ namespace PJWebsiteProject.Controllers
 			_shoppingCart = shoppingCart;
 		}
 
+		[Authorize]
 		public ViewResult Index()
 		{
 			var items = _shoppingCart.GetShoppingCartItems();
 			_shoppingCart.ShoppingCartItems = items;
 
-			var sCVM = new ShoppingCartViewModel
+			var shoppingCartViewModel = new ShoppingCartViewModel
 			{
 				ShoppingCart = _shoppingCart,
 				ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
 			};
-			return View(sCVM);
+			return View(shoppingCartViewModel);
 		}
 
+		[Authorize]
 		public RedirectToActionResult AddToShoppingCart(int drinkId)
 		{
 			var selectedDrink = _drinkRepository.Drinks.FirstOrDefault(p => p.DrinkId == drinkId);

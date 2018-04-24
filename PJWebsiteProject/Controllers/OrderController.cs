@@ -23,8 +23,8 @@ namespace PJWebsiteProject.Controllers
 			return View();
 		}
 
-		[Authorize]
 		[HttpPost]
+		[Authorize]
 		public IActionResult Checkout(Order order)
 		{
 			var items = _shoppingCart.GetShoppingCartItems();
@@ -45,7 +45,6 @@ namespace PJWebsiteProject.Controllers
 			return View(order);
 		}
 
-		[Authorize]
 		public IActionResult CheckoutComplete()
 		{
 			ViewBag.CheckoutCompleteMessage = "Thanks for your order! :) ";

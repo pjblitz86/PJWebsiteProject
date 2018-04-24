@@ -53,7 +53,7 @@ namespace PJWebsiteProject
 			services.AddScoped(sp => ShoppingCart.GetCart(sp));
 			services.AddTransient<IOrderRepository, OrderRepository>();
 
-			services.AddMvc();
+			services.AddMvc(); // extension method
 			services.AddMemoryCache();
 			services.AddSession();
 		}
@@ -72,7 +72,7 @@ namespace PJWebsiteProject
 				app.UseExceptionHandler("/Home/Error");
 			}
 
-			app.UseStaticFiles();
+			app.UseStaticFiles(); // serve wwwroot
 
 			app.UseAuthentication();
 

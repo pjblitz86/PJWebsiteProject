@@ -1,8 +1,8 @@
-﻿<h2>@Model.CurrentCategory</h2>
+﻿@model DrinkListViewModel
 
-@{
-    foreach (Drink drink in Model.Drinks)
+<div class="row marginTop">
+    @foreach (var drink in Model.Drinks)
     {
         @Html.Partial("DrinksSummary", drink)
     }
-}
+</div>
