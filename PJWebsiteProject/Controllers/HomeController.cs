@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PJWebsiteProject.Models;
 using PJWebsiteProject.Models.DrinkModels;
 using PJWebsiteProject.ViewModels;
@@ -24,17 +25,9 @@ namespace PJWebsiteProject.Controllers
 			return View(homeViewModel);
 		}
 
-		public IActionResult About()
+		[Authorize]
+		public IActionResult ColorGame()
 		{
-			ViewData["Message"] = "Your application description page.";
-
-			return View();
-		}
-
-		public IActionResult Contact()
-		{
-			ViewData["Message"] = "Your contact page.";
-
 			return View();
 		}
 

@@ -7,6 +7,7 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
@@ -17,7 +18,7 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #213189">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #213189; font-family: 'Roboto', sans-serif;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,6 +33,7 @@
                 <ul class="nav navbar-nav">
                     @await Component.InvokeAsync("ShoppingCartSummary")
                     @await Component.InvokeAsync("CategoryMenu")
+                    <li><a asp-controller="Home" asp-action="ColorGame">Color Game</a></li>
                     <li><a asp-controller="Contact" asp-action="Index">Contact us</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
